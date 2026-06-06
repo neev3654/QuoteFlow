@@ -4,7 +4,7 @@ import RoleRoute from './RoleRoute';
 import { ROLES } from '../utils/constants';
 
 // Layout
-import MainLayout from '../components/layout/MainLayout';
+import AppLayout from '../components/layout/AppLayout';
 
 // Auth Pages
 import Login from '../pages/auth/Login';
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        element: <MainLayout />,
+        element: <AppLayout />,
         children: [
           {
             index: true,

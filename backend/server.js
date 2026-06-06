@@ -4,6 +4,7 @@ const app = require('./src/app');
 const logger = require('./src/config/logger');
 const { verifyEmailConnection } = require('./src/config/email');
 
+
 // Handle uncaughtException
 process.on('uncaughtException', (err) => {
   logger.error(`Uncaught Exception: ${err.message}`);

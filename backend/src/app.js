@@ -59,11 +59,40 @@ if (process.env.NODE_ENV === 'development') {
 
 // Health check route
 app.get('/api/v1/health', (req, res) => {
-  res.json({
+  res.status(200).json({
+    success: true,
     status: 'ok',
-    timestamp: new Date(),
+    message: 'QuoteFlow API is running',
+    environment: process.env.NODE_ENV,
+    uptime: Math.floor(process.uptime()) + 's',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
   });
 });
+
+// Route files
+const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
+const vendorRoutes = require('./routes/vendor.routes');
+const rfqRoutes = require('./routes/rfq.routes');
+const quotationRoutes = require('./routes/quotation.routes');
+const approvalRoutes = require('./routes/approval.routes');
+const purchaseOrderRoutes = require('./routes/purchaseOrder.routes');
+const invoiceRoutes = require('./routes/invoice.routes');
+const activityRoutes = require('./routes/activityLog.routes');
+const analyticsRoutes = require('./routes/analytics.routes');
+
+// Mount routes
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/vendors', vendorRoutes);
+app.use('/api/v1/rfqs', rfqRoutes);
+app.use('/api/v1/quotations', quotationRoutes);
+app.use('/api/v1/approvals', approvalRoutes);
+app.use('/api/v1/purchase-orders', purchaseOrderRoutes);
+app.use('/api/v1/invoices', invoiceRoutes);
+app.use('/api/v1/activity', activityRoutes);
+app.use('/api/v1/analytics', analyticsRoutes);
 
 // 404 Handler for unknown routes
 app.use((req, res, next) => {

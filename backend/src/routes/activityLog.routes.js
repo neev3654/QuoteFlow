@@ -1,13 +1,13 @@
 const express = require('express');
-const { getDashboardStats } = require('../controllers/analytics.controller');
+const { getActivityLogs } = require('../controllers/activityLog.controller');
 const { verifyJWT } = require('../middlewares/auth.middleware');
 const { authorizeRoles } = require('../middlewares/role.middleware');
 
 const router = express.Router();
 
 router.use(verifyJWT);
-router.use(authorizeRoles('admin', 'manager'));
 
-router.get('/dashboard', getDashboardStats);
+router.route('/')
+  .get(authorizeRoles('admin', 'manager'), getActivityLogs);
 
 module.exports = router;

@@ -21,14 +21,26 @@ import InvoiceList from '../pages/invoices/InvoiceList';
 import ActivityLog from '../pages/activity/ActivityLog';
 import AnalyticsDashboard from '../pages/analytics/AnalyticsDashboard';
 
+import AuthLayout from '../components/layout/AuthLayout';
+import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
+
 const router = createBrowserRouter([
   {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/register',
+        element: <Register />,
+      },
+      {
+        path: '/forgot-password',
+        element: <ForgotPasswordPage />,
+      },
+    ]
   },
   {
     path: '/',

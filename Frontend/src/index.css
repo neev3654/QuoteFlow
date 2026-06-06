@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0a0f1e;        /* Deep navy black — main background */
+    --bg-secondary: #0f1629;      /* Slightly lighter — cards, panels */
+    --bg-tertiary: #161d35;       /* Elevated surfaces, hover states */
+    --bg-accent: #1a2340;         /* Input fields, table rows */
+    --border-primary: #1e2d4a;    /* Subtle borders */
+    --border-accent: #2a3f6a;     /* Highlighted borders */
+    --text-primary: #e8edf5;      /* Main text */
+    --text-secondary: #8899bb;    /* Muted text, labels */
+    --text-tertiary: #4a5d82;     /* Disabled, placeholder */
+    --accent-blue: #3b82f6;       /* Primary CTA, links */
+    --accent-blue-bright: #60a5fa;/* Hover state */
+    --accent-blue-glow: rgba(59, 130, 246, 0.15); /* Glow effects */
+    --accent-emerald: #10b981;    /* Success, approved, active */
+    --accent-amber: #f59e0b;      /* Warning, pending */
+    --accent-red: #ef4444;        /* Error, rejected, danger */
+    --accent-violet: #8b5cf6;     /* Special highlights */
+    --font-display: 'DM Sans', sans-serif;     /* Headers, nav */
+    --font-body: 'DM Sans', sans-serif;        /* Body text */
+    --font-mono: 'JetBrains Mono', monospace;  /* Numbers, codes, IDs */
+
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* Shimmer animation for skeletons */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* Page fade-in transition */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageFadeIn 0.25s ease forwards; }
+
+/* Count-up number animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stat-value { animation: countUp 0.4s ease forwards; }
+
+/* Glow effects */
+.glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.25); }
+.glow-emerald { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+
+/* Geometric background pattern */
+.grid-pattern {
+  background-image: linear-gradient(var(--border-primary) 1px, transparent 1px),
+  linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
